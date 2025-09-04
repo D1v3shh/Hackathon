@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Results - AyuNutriCare</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f3ec;
+            margin: 0;
+            color: #2f3e46;
+        }
+        .header {
+            background: #4a7c59;
+            color: #fff;
+            padding: 1.25rem;
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #ffffff;
+            padding: 2.5rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .primary-green {
+            color: #355e3b;
+        }
+        .accent-green-bg {
+             background-color: #4caf50;
+        }
+        .accent-green-bg:hover {
+             background-color: #388e3c;
+        }
+        .dosha-card {
+            background: linear-gradient(135deg, #e8f5e9, #ffffff);
+            border: 1px solid #d1e7dd;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+        .dosha-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            color: #355e3b;
+        }
+        .traits-list li {
+            background-color: #f7fafc;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            border: 1px solid #edf2f7;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s ease;
+            margin-top: 2.5rem;
+            text-decoration: none;
+        }
+        .cta-button:hover {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">AyuNutriCare</header>
+
+    <main class="container">
+        <h2 class="text-3xl font-bold primary-green">Your Ayurvedic Profile Results</h2>
+        <p class="mt-4 text-lg text-gray-600">Based on your answers, we've determined your unique mind-body constitution, or <strong class="font-semibold">Prakriti</strong>. This is the foundation of your personalized wellness journey.</p>
+        
+        <div class="dosha-card">
+            <div class="dosha-icon">
+                <!-- Icon for Pitta (Fire) -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-3.797A8.222 8.222 0 0012 6a8.222 8.222 0 00-3.362.805 8.25 8.25 0 015.724-1.591z" />
+                </svg>
+            </div>
+            <p class="text-xl text-gray-700">Your dominant Dosha is</p>
+            <h3 class="text-5xl font-bold primary-green mt-1">Pitta</h3>
+            <p class="mt-2 text-lg font-semibold text-gray-500">(Fire & Water)</p>
+        </div>
+
+        <div class="text-left mt-10">
+            <h4 class="text-2xl font-bold primary-green text-center mb-6">Understanding Pitta</h4>
+            <p class="text-gray-700 mb-6">The Pitta dosha governs metabolism, digestion, and transformation in the body. Individuals with a dominant Pitta constitution are known for their sharp intellect, ambition, and strong digestion. When in balance, Pitta individuals are warm, intelligent, and good leaders. When out of balance, they can be prone to irritability, inflammation, and acidity.</p>
+            
+            <h5 class="font-semibold text-lg mb-3">Common Characteristics of Pitta:</h5>
+            <ul class="traits-list grid md:grid-cols-2 gap-x-6 gap-y-2 text-gray-800">
+                <li>Strong appetite and digestion</li>
+                <li>Focused and determined mindset</li>
+                <li>Sharp, penetrating intelligence</li>
+                <li>Assertive and confident nature</li>
+                <li>Tendency towards perfectionism</li>
+                <li>Dislikes heat and hot weather</li>
+                <li>Natural leadership qualities</li>
+                <li>Prone to skin sensitivity & inflammation</li>
+            </ul>
+        </div>
+
+        <a href="dashboard.html" class="cta-button">
+            Explore Your Personalized Dashboard &rarr;
+        </a>
+
+    </main>
+
+</body>
+</html>

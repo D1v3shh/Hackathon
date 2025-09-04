@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Questionnaire - AyuNutriCare</title>
+  <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+  <header class="header">
+    <h1>AyuNutriCare</h1>
+  </header>
+
+  <main class="test-container">
+    <h2>🧾 Health Questionnaire</h2>
+    <form id="testForm">
+
+      <!-- Basic Info -->
+      <div class="question-card">
+  <img src="/assests/images/age.png" alt="age icon" class="icon">
+  <div>
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" class="styled-input" placeholder="Enter your age">
+  </div>
+</div>
+
+
+      <div class="question-card">
+  <img src="/assests/images/gender.png" alt="gender icon" class="icon">
+  <div>
+    <label>Gender:</label>
+    <select name="gender" class="styled-select">
+      <option value="" disabled selected>Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+  </div>
+</div>
+
+<div class="question-card">
+  <img src="/assests/images/height.png" alt="height icon" class="icon">
+  <div>
+    <label>Height:</label>
+    <div class="options">
+      <!-- Height in cm -->
+      <label>
+        <input type="number" name="heightCm" placeholder="Height in cm" class="input-box small-box">
+        <span>cm</span>
+      </label>
+      <p style="margin: 8px 0; font-weight: bold; text-align: center;">OR</p>
+      <!-- Height in feet + inches -->
+      <label>
+        <input type="number" name="heightFeet" placeholder="Feet" class="input-box small-box">
+        <input type="number" name="heightInches" placeholder="Inches" class="input-box small-box">
+        <span>ft/in</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+      <div class="question-card">
+  <img src="/assests/images/weight.png" alt="weight icon" class="icon">
+  <div>
+    <label for="weight">Weight:</label>
+    <input type="number" id="weight" name="weight" class="styled-input" placeholder="Enter your weight (kg)">
+  </div>
+</div>
+      <!-- Existing Questions -->
+      <div class="question-card">
+        <img src="/assests/images/leaf.png" alt="leaf icon" class="icon">
+        <div>
+          <label>Do you follow a vegetarian diet?</label>
+          <div class="options">
+            <label><input type="radio" name="vegetarian" value="yes"> Yes</label>
+            <label><input type="radio" name="vegetarian" value="no"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <img src="/assests/images/water-pot.png" alt="water icon" class="icon">
+        <div>
+          <label>How much water do you drink daily?</label>
+          <div class="options">
+            <label><input type="radio" name="water" value="less1"> Less than 1 liter</label>
+            <label><input type="radio" name="water" value="1-2"> 1–2 liters</label>
+            <label><input type="radio" name="water" value="more2"> More than 2 liters</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <img src="/assests/images/bowl.png" alt="bowl icon" class="icon">
+        <div>
+          <label>Do you have any food allergies?</label>
+          <div class="options">
+            <label><input type="radio" name="allergies" value="yes"> Yes</label>
+            <label><input type="radio" name="allergies" value="no"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+  <img src="/assests/images/plant.png" alt="plant icon" class="icon">
+  <div>
+    <label>Please list any current medications:</label>
+    <textarea name="medications" class="styled-textarea" placeholder="Type here..."></textarea>
+  </div>
+</div>
+
+      <!-- Lifestyle Questions -->
+      <div class="question-card">
+        <img src="/assests/images/sleep.png" alt="sleep icon" class="icon">
+        <div>
+          <label>How many hours of sleep do you get daily?</label>
+          <div class="options">
+            <label><input type="radio" name="sleep" value="less6"> Less than 6 hours</label>
+            <label><input type="radio" name="sleep" value="6-8"> 6–8 hours</label>
+            <label><input type="radio" name="sleep" value="more8"> More than 8 hours</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <img src="/assests/images/exercise.png" alt="exercise icon" class="icon">
+        <div>
+          <label>How often do you exercise?</label>
+          <div class="options">
+            <label><input type="radio" name="exercise" value="never"> Never</label>
+            <label><input type="radio" name="exercise" value="1-2"> 1–2 times/week</label>
+            <label><input type="radio" name="exercise" value="3-5"> 3–5 times/week</label>
+            <label><input type="radio" name="exercise" value="daily"> Daily</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <img src="/assests/images/stress.png" alt="stress icon" class="icon">
+        <div>
+          <label>How stressed do you feel on a daily basis?</label>
+          <div class="options">
+            <label><input type="radio" name="stress" value="low"> Low</label>
+            <label><input type="radio" name="stress" value="moderate"> Moderate</label>
+            <label><input type="radio" name="stress" value="high"> High</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-card">
+  <img src="/assests/images/goal.png" alt="goal icon" class="icon">
+  <div>
+    <label>What is your main health goal?</label>
+    <select name="goal" class="styled-select">
+      <option value="" disabled selected>Select Goal</option>
+      <option>Weight Loss</option>
+      <option>Muscle Gain</option>
+      <option>Better Digestion</option>
+      <option>Stress Relief</option>
+      <option>General Wellness</option>
+    </select>
+  </div>
+</div>
+      <!-- Submit -->
+      <a href="/result.html" class="btn">Submit</a>
+    </form>
+  </main>
+</body>
+</html>

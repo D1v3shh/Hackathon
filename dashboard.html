@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard - AyuNutriCare</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom styles to match the brand theme */
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f3ec; /* Soft beige background */
+            color: #2f3e46;
+        }
+        .header-bg {
+            background-color: #4a7c59; /* Main green from header */
+        }
+        .sidebar-bg {
+            background-color: #ffffff;
+        }
+        .primary-green {
+            color: #355e3b;
+        }
+        .primary-green-bg {
+             background-color: #355e3b;
+        }
+        .accent-green-bg {
+             background-color: #4caf50;
+        }
+        .accent-green-bg:hover {
+             background-color: #388e3c;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .quick-action-card {
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .quick-action-card:hover {
+            background-color: #e8f5e9; /* Light green hover */
+        }
+        .dosha-card {
+            background: linear-gradient(135deg, #e8f5e9, #ffffff);
+        }
+    </style>
+</head>
+<body class="flex h-screen antialiased">
+
+    <!-- Sidebar -->
+    <aside class="w-64 sidebar-bg shadow-lg flex-shrink-0 hidden lg:flex flex-col">
+        <div class="h-20 flex items-center justify-center header-bg">
+            <h1 class="text-2xl font-bold text-white">AyuNutriCare</h1>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="#" class="flex items-center px-4 py-3 text-white primary-green-bg rounded-lg font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                Dashboard
+            </a>
+            <a href="#" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                My Wellness Plan
+            </a>
+             <a href="#" class="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                Profile
+            </a>
+        </nav>
+        <div class="p-4 border-t">
+             <a href="index.html" class="flex items-center justify-center w-full px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3" /></svg>
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Header -->
+        <header class="bg-white shadow-sm flex-shrink-0 z-10">
+            <div class="flex justify-between items-center p-4">
+                 <div class="lg:hidden">
+                    <h1 class="text-2xl font-bold primary-green">AyuNutriCare</h1>
+                 </div>
+                 <div class="hidden lg:block">
+                     <!-- User Profile Section -->
+                    <div>
+                        <h2 class="text-2xl font-bold">Namaste, Priya!</h2>
+                        <p class="text-sm text-gray-500">
+                           Your Prakriti: <span class="font-semibold text-green-800">Pitta-Vata</span>
+                           <a href="#" class="ml-2 text-sm font-medium text-green-700 hover:underline">Edit Profile</a>
+                        </p>
+                    </div>
+                 </div>
+                 <button id="mobile-menu-btn" class="lg:hidden text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                 </button>
+            </div>
+        </header>
+        
+        <!-- Dashboard Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6 md:p-8">
+            <div class="container mx-auto">
+                 <div class="lg:hidden mb-6">
+                    <!-- User Profile Section for Mobile -->
+                    <div>
+                        <h2 class="text-2xl font-bold">Namaste, Priya!</h2>
+                        <p class="text-sm text-gray-500">
+                           Your Prakriti: <span class="font-semibold text-green-800">Pitta-Vata</span>
+                           <a href="#" class="ml-2 text-sm font-medium text-green-700 hover:underline">Edit Profile</a>
+                        </p>
+                    </div>
+                 </div>
+
+                <!-- Quick Actions -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <a href="#" class="card quick-action-card p-4 flex flex-col items-center justify-center text-center">
+                        <svg class="h-8 w-8 primary-green mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        <span class="font-semibold text-sm">Book Consultation</span>
+                    </a>
+                    <a href="#" class="card quick-action-card p-4 flex flex-col items-center justify-center text-center">
+                        <svg class="h-8 w-8 primary-green mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        <span class="font-semibold text-sm">Wellness Journey</span>
+                    </a>
+                    <a href="#" class="card quick-action-card p-4 flex flex-col items-center justify-center text-center">
+                        <svg class="h-8 w-8 primary-green mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        <span class="font-semibold text-sm">Herbal Products</span>
+                    </a>
+                    <a href="#" class="card quick-action-card p-4 flex flex-col items-center justify-center text-center">
+                        <svg class="h-8 w-8 primary-green mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        <span class="font-semibold text-sm">Track Balance</span>
+                    </a>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Left Column -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <!-- Health Summary -->
+                        <div class="card p-6">
+                            <h3 class="font-bold text-lg mb-4 primary-green">Today's Ayurvedic Summary</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div><p class="text-2xl font-bold">Balanced</p><p class="text-sm text-gray-500">Dosha State</p></div>
+                                <div><p class="text-2xl font-bold">Strong</p><p class="text-sm text-gray-500">Agni (Digestion)</p></div>
+                                <div><p class="text-2xl font-bold">High</p><p class="text-sm text-gray-500">Energy Level</p></div>
+                                <div><p class="text-2xl font-bold">Calm</p><p class="text-sm text-gray-500">Mind Clarity</p></div>
+                            </div>
+                        </div>
+
+                        <!-- Progress Tracker -->
+                        <div class="card p-6">
+                            <h3 class="font-bold text-lg mb-4 primary-green">Holistic Progress Tracker</h3>
+                             <p class="text-sm text-gray-500 mb-4">Track your self-reported balance over time.</p>
+                            <canvas id="progressChart"></canvas>
+                        </div>
+
+                        <!-- Recommendations -->
+                         <div class="card p-6">
+                            <h3 class="font-bold text-lg mb-4 primary-green">Pitta-Balancing Recommendations</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-semibold">Nourishment</h4>
+                                    <p class="text-sm text-gray-600">Focus on cooling foods like cucumber, coconut, and leafy greens. Avoid spicy and fried foods.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Suggested Article</h4>
+                                    <a href="#" class="text-sm text-green-700 hover:underline">Managing Pitta During Summer &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="space-y-8">
+                        <!-- Your Profile Card -->
+                        <div class="card dosha-card p-6">
+                            <h3 class="font-bold text-lg mb-2 primary-green">Your Ayurvedic Profile</h3>
+                            <p class="text-sm text-gray-600 mb-4">Your constitution is predominantly <strong class="font-semibold">Pitta (Fire & Water)</strong> with a secondary influence of <strong class="font-semibold">Vata (Air & Ether)</strong>. Your path to wellness involves balancing Pitta's heat with cooling, calming practices.</p>
+                             <a href="#" class="text-sm font-semibold text-green-700 hover:underline">Learn more about your Prakriti &rarr;</a>
+                        </div>
+                        <!-- Daily Routine (Dinacharya) -->
+                        <div class="card p-6">
+                            <h3 class="font-bold text-lg mb-4 primary-green">Today's Dinacharya (Daily Rituals)</h3>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-start"><span class="accent-green-bg text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-xs">✓</span><span><strong class="font-semibold">Morning:</strong> Drink warm water with lime to kindle Agni.</span></li>
+                                <li class="flex items-start"><span class="accent-green-bg text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-xs">→</span><span><strong class="font-semibold">Mid-day:</strong> A short walk after lunch to aid digestion. Avoid intense midday sun.</span></li>
+                                <li class="flex items-start"><span class="accent-green-bg text-white rounded-full w-5 h-5 flex items-center justify-center mr-3 mt-1 flex-shrink-0 text-xs">!</span><span><strong class="font-semibold">Evening:</strong> Take Triphala supplement before bed.</span></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Support -->
+                        <div class="card p-6">
+                             <h3 class="font-bold text-lg mb-4 primary-green">Community & Support</h3>
+                             <div class="space-y-3">
+                                <a href="#" class="block text-center w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg text-sm">Community Forum</a>
+                                <a href="#" class="block text-center w-full accent-green-bg text-white font-semibold py-2 px-4 rounded-lg text-sm">Chat with Vaidya</a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart.js Progress Tracker
+            const ctx = document.getElementById('progressChart');
+            if(ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+                        datasets: [
+                        {
+                            label: 'Sleep Quality',
+                            data: [6, 7, 6, 8, 7, 8], // Sample data 1-10
+                            borderColor: '#4caf50',
+                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                            fill: false,
+                            tension: 0.3,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Stress Level',
+                            data: [7, 6, 6, 5, 4, 3], // Sample data 1-10 (lower is better)
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            fill: false,
+                            tension: 0.3,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Energy',
+                            data: [5, 6, 7, 7, 8, 9], // Sample data 1-10
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: false,
+                            tension: 0.3,
+                            borderWidth: 2
+                        }
+                    ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                max: 10,
+                                grid: {
+                                    color: '#e5e7eb'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
